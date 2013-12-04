@@ -1,6 +1,6 @@
 en:
   layouts:
     application:
-      default_title: 'MDH'
+      default_title: 'MarkHolmberg.com'
       default_sub_title: ''
-      title: "MDH : %{title}"
+      title: "MarkHolmberg.com : %{title}"
