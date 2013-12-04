@@ -1,0 +1,46 @@
+%nav.navbar.navbar-default{role: "navigation"}
+  / Brand and toggle get grouped for better mobile display
+  .navbar-header
+    %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    %a.navbar-brand{href: "#"} MarkHolmberg.com
+  / Collect the nav links, forms, and other content for toggling
+  #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    %ul.nav.navbar-nav
+      %li
+        = link_to "https://github.com/mark-d-holmberg" do
+          = image_tag("favicon_github.png")
+          %span.addon GitHub
+      %li{class: (params[:controller] == "dashboard") ? "active" : nil}
+        %a{href: "#"}
+          %i.glyphicon.glyphicon-calendar
+          My Dashboard
+      %li{class: (params[:controller] == "articles") ? "active" : nil}
+        %a{href: "#"}
+          %i.glyphicon.glyphicon-list-alt
+          Articles
+    .navbar-form.navbar-left{role: "search"}
+      %input.form-control{placeholder: "Search", type: "text"}
+    %ul.nav.navbar-nav.navbar-right
+      %li.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %i.glyphicon.glyphicon-cog
+          My Account
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            %a{href: "#"}
+              %i.glyphicon.glyphicon-home
+              Dashboard
+          %li
+            %a{href: "#"}
+              %i.glyphicon.glyphicon-edit
+              Edit Profile
+          %li.divider
+          %li
+            %a{href: "#"}
+              %i.glyphicon.glyphicon-off
+              Logout
