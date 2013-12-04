@@ -3,7 +3,7 @@
   %head
     %meta{charset: "utf-8"}
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
-    %title Blog
+    %title= content_for?(:title) ? t('.title', title: yield(:title)) : t('.default_title')
     / Le HTML5 shim, for IE6-8 support of HTML5 elements
     /[if lt IE 9]
     = javascript_include_tag "bootstrap-ie"
@@ -18,4 +18,9 @@
           = content_tag :div, class: "alert alert-#{name == :error ? "danger" : "success" } alert-dismissable" do
             %button.close{type: "button", data: {dismiss: "alert"}, aria: {hidden: "true"} } &times;
             = msg
+      - if content_for?(:sub_title)
+        .page-header
+          %h3.sub-title.inline= content_for?(:sub_title) ? yield(:sub_title) : t('.default_sub_title')
       = yield
+      %footer
+        %p &copy; #{Date.today.year} MarkHolmberg.com
