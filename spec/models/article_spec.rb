@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Article do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "concerning validations" do
+    it "should have a valid factory" do
+      build(:article).should be_valid
+    end
+  end
 end
