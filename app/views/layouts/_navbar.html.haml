@@ -19,7 +19,7 @@
           %i.glyphicon.glyphicon-home
           My Dashboard
       %li{class: (params[:controller] == "articles") ? "active" : nil}
-        %a{href: "#"}
+        %a{href: articles_path}
           %i.glyphicon.glyphicon-list-alt
           Articles
     .navbar-form.navbar-left{role: "search"}
