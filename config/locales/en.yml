@@ -1,4 +1,7 @@
 en:
+  time:
+    formats:
+      short: "%d %b %Y, %l:%M%p"
   activerecord:
     attributes:
       user:

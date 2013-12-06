@@ -1,0 +1,22 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+form#new_comment textarea#comment_content, form#edit_comment textarea#comment_content, form#reply_comment textarea#comment_content {
+  width: 40em !important;
+}
+div#comments {
+  margin-top: 1em;
+}
+
+h4.media-heading { color: #8CA834; }
+
+.comments_count.inline {
+  color: #858585;
+}
+
+.my-comments {
+  border-left: 2px solid black;
+}
+.not-my-comments {
+  border-left: 2px solid #bada55;
+}

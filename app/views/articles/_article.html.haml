@@ -1,0 +1,28 @@
+%div.media.media-article
+  = link_to article, class: "pull-left" do
+    = image_tag "pfp_logo_icon.jpg", class: 'media-object'
+  %div.media-body
+    %h4.media-heading
+      = link_to article.title, article
+      %div.comments_count.inline
+        %i.glyphicon.glyphicon-comment
+        %span.inline-block 1 Comment
+      %button.close &times;
+    %div
+      %code.author Mark Holmberg
+      - if article.published_at.present?
+        %section.inline.published_at= l(article.published_at, format: :short)
+      - if article.updated_at.present?
+        %section.inline.updated_at= l(article.updated_at, format: :short)
+      .excerpt= simple_format article.excerpt
+    %ul.breadcrumb.tag-list
+      %li one
+      %li one
+      %li one
+    -# unless article.tag_list.blank?
+      %ul.breadcrumb.tag-list
+        - article.tag_list.each do |tag|
+          %li
+            = link_to tag, tag_articles_path(tag)
+            - unless tag == article.tag_list.last
+              %span.divider /

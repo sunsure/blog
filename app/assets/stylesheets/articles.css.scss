@@ -1,0 +1,93 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* rounded corners SASS mixin */
+@mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+.inline { display: inline; }
+.media-heading .close {
+  font-size: 1.5em;
+  padding: 0.2em;
+}
+ul.tag-list {
+  &:before {
+    content: "Tags: ";
+    font-weight: bold;
+    margin-right: 1em;
+  }
+}
+section.inline {
+  display: inline;
+}
+.published_at {
+  &:before {
+    content: "Published: ";
+    font-weight: bold;
+  }
+}
+.updated_at {
+  &:before {
+    content: "Updated: ";
+    font-weight: bold;
+  }
+}
+.created_at {
+  &:before {
+    content: "Created: ";
+    font-weight: bold;
+    margin-left: 0.5em;
+  }
+}
+.excerpt {
+  margin-top: 0.5em;
+}
+strong.author_name {
+  &:before {
+    content: "By: "
+  }
+}
+.tag_small {
+  font-size: 0.8em;
+}
+.tag_medium {
+  font-size: 1.1em;
+  font-style: italic;
+}
+.tag_large {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.breadcrumb.tag-list {
+  margin-top: 0.5em;
+}
+
+// datepicker on calendar view
+#date {
+  width: 6em;
+  text-align: center;
+}
+
+#article_per_page {
+  display: inline;
+  width: 10em;
+}
+
+.tag-list {
+  background-color: #E9E9E9 !important;
+}
+span.inine-block { display: inline-block !important; }
+
+blockquote p {
+  font-size: 1.2em !important;
+  padding-left: 1em;
+  padding: 0.5em;
+}
+blockquote {
+  border-left: 1em solid #CCCCCC !important;
+  background-color: #f7f7f7;
+}

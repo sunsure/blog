@@ -20,7 +20,7 @@
             = msg
       - if content_for?(:sub_title)
         .page-header
-          %h3.sub-title.inline= content_for?(:sub_title) ? yield(:sub_title) : t('.default_sub_title')
+          %h3.sub-title= content_for?(:sub_title) ? yield(:sub_title) : t('.default_sub_title')
       = yield
       %footer
         %p &copy; #{Date.today.year} MarkHolmberg.com
