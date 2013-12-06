@@ -14,10 +14,11 @@
         = link_to "https://github.com/mark-d-holmberg" do
           = image_tag("favicon_github.png")
           %span.addon GitHub
-      %li{class: (params[:controller] == "dashboard") ? "active" : nil}
-        %a{href: dashboard_path}
-          %i.glyphicon.glyphicon-home
-          My Dashboard
+      - if user_signed_in?
+        %li{class: (params[:controller] == "dashboard") ? "active" : nil}
+          %a{href: dashboard_path}
+            %i.glyphicon.glyphicon-home
+            My Dashboard
       %li{class: (params[:controller] == "articles") ? "active" : nil}
         %a{href: articles_path}
           %i.glyphicon.glyphicon-list-alt
@@ -25,22 +26,32 @@
     .navbar-form.navbar-left{role: "search"}
       %input.form-control{placeholder: "Search", type: "text"}
     %ul.nav.navbar-nav.navbar-right
-      %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          %i.glyphicon.glyphicon-cog
-          My Account
-          %b.caret
-        %ul.dropdown-menu
-          %li
-            %a{href: dashboard_path}
-              %i.glyphicon.glyphicon-home
-              Dashboard
-          %li
-            %a{href: "#"}
-              %i.glyphicon.glyphicon-edit
-              Edit Profile
-          %li.divider
-          %li
-            %a{href: "#"}
-              %i.glyphicon.glyphicon-off
-              Logout
+      - if user_signed_in?
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            %i.glyphicon.glyphicon-cog
+            My Account
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{href: dashboard_path}
+                %i.glyphicon.glyphicon-home
+                Dashboard
+            %li
+              %a{href: edit_user_registration_path}
+                %i.glyphicon.glyphicon-edit
+                Edit Profile
+            %li.divider
+            %li
+              = link_to destroy_user_session_path, method: :delete do
+                %i.glyphicon.glyphicon-off
+                Logout
+      - else
+        %li
+          = link_to new_user_registration_path do
+            %i.glyphicon.glyphicon-align-justify
+            Register
+        %li
+          = link_to new_user_session_path do
+            %i.glyphicon.glyphicon-off
+            Login

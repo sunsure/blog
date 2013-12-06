@@ -42,15 +42,4 @@ end
 gem 'haml-rails'
 gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', require: 'bootstrap-rails'
 gem 'simple_form'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'devise'

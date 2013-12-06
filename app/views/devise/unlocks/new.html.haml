@@ -1,0 +1,13 @@
+- title "Resend Unlock Instructions"
+
+= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+  = f.error_notification
+  = f.full_error :unlock_token
+
+  = f.input :email, required: true, autofocus: true
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.button :submit, "Resend unlock instructions"
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)

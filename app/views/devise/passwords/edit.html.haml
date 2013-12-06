@@ -1,0 +1,13 @@
+- title "Change Password"
+
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+  = f.error_notification
+  = f.input :reset_password_token, as: :hidden
+  = f.full_error :reset_password_token
+
+  = f.input :password, label: "New Password", required: true, autofocus: true
+  = f.input :password_confirmation, label: "New Password Confirmation", required: true
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.button :submit, "Change My Password"
