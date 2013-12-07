@@ -1,0 +1,20 @@
+- title "Listing Users"
+
+= link_to 'New User', new_user_path
+
+%table.table.table-striped.table-condensed.table-hover#users
+  %thead
+    %tr
+      %th Email
+      %th
+      %th
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to user.email, user
+        %td.action-button
+          .pull-right
+            = link_to 'Edit', edit_user_path(user)
+        %td.action-button
+          .pull-right
+            = link_to 'Remove', user, method: :delete, data: { confirm: 'Are you sure?' }

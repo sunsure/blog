@@ -23,6 +23,11 @@
         %a{href: articles_path}
           %i.glyphicon.glyphicon-list-alt
           Articles
+      - if user_signed_in?
+        %li{class: (params[:controller] == "users") ? "active" : nil}
+          %a{href: users_path}
+            %i.glyphicon.glyphicon-user
+            Users
     .navbar-form.navbar-left{role: "search"}
       %input.form-control{placeholder: "Search", type: "text"}
     %ul.nav.navbar-nav.navbar-right

@@ -1,0 +1,11 @@
+= simple_form_for @user do |f|
+  = f.error_notification
+
+  = f.input :email
+  = f.input :password, required: @user.new_record?
+  = f.input :password_confirmation, required: @user.new_record?
+  = f.input :role_ids, collection: Role.all, as: :check_boxes
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.button :submit, class: 'btn btn-primary'
