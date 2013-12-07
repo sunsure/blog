@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131205014633) do
+ActiveRecord::Schema.define(version: 20131207011132) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -19,6 +19,23 @@ ActiveRecord::Schema.define(version: 20131205014633) do
     t.text     "excerpt"
     t.text     "content"
     t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "powers", force: true do |t|
+    t.integer  "role_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "powers", ["role_id"], name: "index_powers_on_role_id", using: :btree
+  add_index "powers", ["user_id"], name: "index_powers_on_user_id", using: :btree
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
