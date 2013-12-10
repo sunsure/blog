@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe UsersController do
 
+  before(:each) do
+    User.any_instance.stub(:is?).and_return(true)
+  end
+
   let(:valid_attributes) { attributes_for(:user) }
   let(:valid_session) { {} }
 

@@ -6,6 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :powers
   has_many :roles, through: :powers
+
   paginates_per 10
+
+
+  def is?(role_key)
+    roles.where(key: role_key).first.present?
+  end
 
 end

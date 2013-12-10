@@ -4,17 +4,23 @@
   %thead
     %th Email
     %th Roles
-    %th
-    %th
+    - if can?(:edit, @user)
+      %th
+    - if can?(:destroy, @user)
+      %th
   %tbody
     %tr
       %td= mail_to @user.email
       %td= @user.roles.pluck(:name).join(", ")
-      %td.action-button
-        .pull-right
-          = link_to edit_user_path(@user), class: 'btn btn-default' do
-            %i.glyphicon.glyphicon-pencil
-      %td.action-button
-        .pull-right
-          = link_to @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
-            %i.glyphicon.glyphicon-remove
+      - if can?(:edit, @user)
+        %td.action-button
+          .pull-right
+            = link_to edit_user_path(@user), class: 'btn btn-default' do
+              %i.glyphicon.glyphicon-pencil
+              Edit
+      - if can?(:destroy, @user)
+        %td.action-button
+          .pull-right
+            = link_to @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+              %i.glyphicon.glyphicon-remove
+              Remove

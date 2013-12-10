@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe ArticlesController do
 
+  before(:each) do
+    User.any_instance.stub(:is?).and_return(true)
+  end
+
   let(:valid_attributes) { attributes_for(:article) }
   let(:valid_session) { {} }
 

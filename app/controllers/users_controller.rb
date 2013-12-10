@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create]
+  authorize_resource only: [:create]
 
   def index
-    @users = User.all.page(params[:page]).per(params[:per_page])
+    @users = @users.page(params[:page]).per(params[:per_page])
   end
 
   def show
   end
 
   def new
-    @user = User.new
   end
 
   def edit
@@ -50,10 +50,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def safe_params
     params.require(:user).permit(:email, :password, :password_confirmation, role_ids: [])

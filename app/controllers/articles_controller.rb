@@ -1,15 +1,15 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create]
+  authorize_resource only: [:create]
 
   def index
-    @articles = Article.all.page(params[:page]).per(params[:per_page])
+    @articles = @articles.page(params[:page]).per(params[:per_page])
   end
 
   def show
   end
 
   def new
-    @article = Article.new
   end
 
   def edit
@@ -39,10 +39,6 @@ class ArticlesController < ApplicationController
   end
 
   private
-
-  def set_article
-    @article = Article.find(params[:id])
-  end
 
   def safe_params
     safe_attrbutes = [:title, :permalink, :excerpt, :content, :published_at]

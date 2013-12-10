@@ -5,7 +5,8 @@
     .form-group
       = select_tag :per_page, options_for_select(per_page_options, selected: params[:per_page]), id: "user_per_page", class: 'form-control'
 
-= link_to 'New User', new_user_path
+- if can?(:create, User)
+  = link_to 'New User', new_user_path
 
 = paginate @users
 
@@ -13,15 +14,23 @@
   %thead
     %tr
       %th Email
-      %th
-      %th
+      - if can?(:edit, User)
+        %th
+      - if can?(:destroy, User)
+        %th
   %tbody
     - @users.each do |user|
       %tr
         %td= link_to user.email, user
-        %td.action-button
-          .pull-right
-            = link_to 'Edit', edit_user_path(user)
-        %td.action-button
-          .pull-right
-            = link_to 'Remove', user, method: :delete, data: { confirm: 'Are you sure?' }
+        - if can?(:edit, user)
+          %td.action-button
+            .pull-right
+              = link_to edit_user_path(user), class: 'btn btn-default' do
+                %i.glyphicon.glyphicon-edit
+                Edit
+        - if can?(:destroy, user)
+          %td.action-button
+            .pull-right
+              = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+                %i.glyphicon.glyphicon-remove
+                Remove

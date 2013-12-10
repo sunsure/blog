@@ -16,4 +16,14 @@ describe User do
       user.roles.should include(role)
     end
   end
+
+  describe "concerning instance methods" do
+    it "should be able to find out if a user has a role by key" do
+      role = create(:role, name: "Admin", key: "admin")
+      user = create(:user)
+      power = create(:power, role: role, user: user)
+      user.is?(:admin).should eq(true)
+      user.is?(:stupid).should eq(false)
+    end
+  end
 end
