@@ -1,6 +1,7 @@
 = simple_form_for @user do |f|
   = f.error_notification
 
+  = f.input :name
   = f.input :email
   = f.input :password, required: @user.new_record?
   = f.input :password_confirmation, required: @user.new_record?

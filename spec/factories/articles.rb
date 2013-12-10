@@ -4,6 +4,6 @@ FactoryGirl.define do
     permalink "MyString"
     excerpt "MyText"
     content "MyText"
-    published_at "2013-12-03 20:22:19"
+    user { |i| i.association(:user) }
   end
 end

@@ -2,6 +2,7 @@
 
 %table.table
   %thead
+    %th Name
     %th Email
     %th Roles
     - if can?(:edit, @user)
@@ -10,6 +11,7 @@
       %th
   %tbody
     %tr
+      %td= @user.name
       %td= mail_to @user.email
       %td= @user.roles.pluck(:name).join(", ")
       - if can?(:edit, @user)

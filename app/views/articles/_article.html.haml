@@ -8,7 +8,7 @@
         %i.glyphicon.glyphicon-comment
         %span.inline-block 1 Comment
     %div
-      %code.author Mark Holmberg
+      %code.author= article.user.name
       - if article.published_at.present?
         %section.inline.published_at= l(article.published_at, format: :short)
       - if article.updated_at.present?

@@ -15,6 +15,16 @@ describe User do
       user.powers.should include(power)
       user.roles.should include(role)
     end
+
+    it "should have many articles" do
+      user = create(:user)
+      a1 = create(:article, user: user)
+      a2 = create(:article, user: user)
+      user.articles.should include(a1)
+      user.articles.should include(a2)
+      a1.user.should eq(user)
+      a2.user.should eq(user)
+    end
   end
 
   describe "concerning instance methods" do

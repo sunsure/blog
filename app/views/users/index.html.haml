@@ -13,6 +13,7 @@
 %table.table.table-striped.table-condensed.table-hover#users
   %thead
     %tr
+      %th Name
       %th Email
       - if can?(:edit, User)
         %th
@@ -21,7 +22,8 @@
   %tbody
     - @users.each do |user|
       %tr
-        %td= link_to user.email, user
+        %td= link_to user.name, user
+        %td= mail_to user.email
         - if can?(:edit, user)
           %td.action-button
             .pull-right

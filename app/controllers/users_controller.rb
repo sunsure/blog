@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   private
 
   def safe_params
-    params.require(:user).permit(:email, :password, :password_confirmation, role_ids: [])
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, role_ids: [])
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207011132) do
+ActiveRecord::Schema.define(version: 20131210042732) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20131207011132) do
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "powers", force: true do |t|
     t.integer  "role_id"
@@ -57,6 +60,7 @@ ActiveRecord::Schema.define(version: 20131207011132) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
