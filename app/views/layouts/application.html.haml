@@ -6,7 +6,6 @@
     %title= content_for?(:title) ? t('.title', title: yield(:title)) : t('.default_title')
     / Le HTML5 shim, for IE6-8 support of HTML5 elements
     /[if lt IE 9]
-    = javascript_include_tag "bootstrap-ie"
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags

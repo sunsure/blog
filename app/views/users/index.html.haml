@@ -1,6 +1,13 @@
 - title "Listing Users"
 
+- content_for :kaminari_per_page do
+  = form_tag nil, class: "inline form-inline", method: :get do
+    .form-group
+      = select_tag :per_page, options_for_select(per_page_options, selected: params[:per_page]), id: "user_per_page", class: 'form-control'
+
 = link_to 'New User', new_user_path
+
+= paginate @users
 
 %table.table.table-striped.table-condensed.table-hover#users
   %thead
