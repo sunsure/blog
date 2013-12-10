@@ -1,17 +1,41 @@
-- title "Article : #{@article.title}"
+- title @article.title
 
-%p
-  %b Title:
-  = @article.title
-%p
-  %b Permalink:
-  = @article.permalink
-%p
-  %b Excerpt:
-  = @article.excerpt
-%p
-  %b Content:
-  = @article.content
-%p
-  %b Published at:
-  = @article.published_at
+%div.media
+  = link_to @article, class: "pull-left" do
+    = image_tag "pfp_logo_icon.jpg", class: 'media-object'
+  %div.media-body
+    %h4.media-heading
+      = link_to @article.title, articles_path
+    %div
+      %code.author= @article.try(:user).try(:name)
+      - if @article.published_at?
+        %section.inline.published_at= l(@article.published_at, format: :short)
+      - if @article.updated_at?
+        %section.inline.updated_at= l(@article.updated_at, format: :short) if @article.updated_at?
+    -# unless @article.tag_list.blank?
+      %ul.breadcrumb.tag-list
+        - @article.tag_list.each do |tag|
+          %li
+            = link_to tag, tag_articles_path(tag)
+            - unless tag == @article.tag_list.last
+              %span.divider /
+  .row-fluid
+    .lead= @article.excerpt
+  .row-fluid
+    .clearfix= @article.content
+
+  %fieldset
+    %legend
+      %i.icon-comment
+      %span.inline#article_comments_legend 1 Comment
+    %div
+      - if current_user
+        -# if can? :create, Comment
+          %p Leave your comments below
+          = link_to "Add Comment", new_article_comment_path(@article), id: 'new_comment_link', remote: true
+      - else
+        %p Login or register to comment on this article.
+    #comments
+      - if @root_comments.present?
+        - @root_comments.each do |root_comment|
+          = render "comments/comment", comment: root_comment
