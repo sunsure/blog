@@ -20,9 +20,9 @@
             - unless tag == @article.tag_list.last
               %span.divider /
   .row-fluid
-    .lead= @article.excerpt
+    .lead= preserve to_markdown(@article.excerpt)
   .row-fluid
-    .clearfix= @article.content
+    .clearfix= preserve to_markdown(@article.content)
 
   %fieldset
     %legend
