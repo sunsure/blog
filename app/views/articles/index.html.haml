@@ -6,7 +6,9 @@
       = select_tag :per_page, options_for_select(per_page_options, selected: params[:per_page]), id: "article_per_page", class: 'form-control'
 
 - if can?(:create, Article)
-  = link_to 'New Article', new_article_path
+  = link_to new_article_path, class: 'btn btn-primary', title: 'New Article' do
+    %span.glyphicon.glyphicon-plus
+    New Article
 
 = paginate @articles
 

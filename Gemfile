@@ -40,7 +40,7 @@ group :test do
 end
 
 gem 'haml-rails'
-gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', require: 'bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.1.1'
 gem 'simple_form'
 gem 'devise'
 gem 'kaminari'

@@ -17,17 +17,17 @@
       - if user_signed_in?
         %li{class: (params[:controller] == "dashboard") ? "active" : nil}
           %a{href: dashboard_path}
-            %i.glyphicon.glyphicon-home
+            %span.glyphicon.glyphicon-home
             My Dashboard
       %li{class: (params[:controller] == "articles") ? "active" : nil}
         %a{href: articles_path}
-          %i.glyphicon.glyphicon-list-alt
+          %span.glyphicon.glyphicon-list-alt
           Articles
       - if user_signed_in?
         - if can?(:index, User)
           %li{class: (params[:controller] == "users") ? "active" : nil}
             %a{href: users_path}
-              %i.glyphicon.glyphicon-user
+              %span.glyphicon.glyphicon-user
               Users
     .navbar-form.navbar-left{role: "search"}
       %input.form-control{placeholder: "Search", type: "text"}
@@ -35,29 +35,29 @@
       - if user_signed_in?
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            %i.glyphicon.glyphicon-cog
-            My Account
+            %span.glyphicon.glyphicon-cog
+            = current_user.name
             %b.caret
           %ul.dropdown-menu
             %li
               %a{href: dashboard_path}
-                %i.glyphicon.glyphicon-home
+                %span.glyphicon.glyphicon-home
                 Dashboard
             %li
               %a{href: edit_user_registration_path}
-                %i.glyphicon.glyphicon-edit
+                %span.glyphicon.glyphicon-edit
                 Edit Profile
             %li.divider
             %li
               = link_to destroy_user_session_path, method: :delete do
-                %i.glyphicon.glyphicon-off
+                %span.glyphicon.glyphicon-off
                 Logout
       - else
         %li
           = link_to new_user_registration_path do
-            %i.glyphicon.glyphicon-align-justify
+            %span.glyphicon.glyphicon-align-justify
             Register
         %li
           = link_to new_user_session_path do
-            %i.glyphicon.glyphicon-off
+            %span.glyphicon.glyphicon-off
             Login

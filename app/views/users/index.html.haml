@@ -6,15 +6,17 @@
       = select_tag :per_page, options_for_select(per_page_options, selected: params[:per_page]), id: "user_per_page", class: 'form-control'
 
 - if can?(:create, User)
-  = link_to 'New User', new_user_path
+  = link_to new_user_path, class: 'btn btn-primary', title: 'New User' do
+    %span.glyphicon.glyphicon-plus
+    New User
 
 = paginate @users
 
-%table.table.table-striped.table-condensed.table-hover#users
+%table.table.table-striped.table-condensed.table-hover#users_index_table
   %thead
     %tr
-      %th Name
-      %th Email
+      %th= User.human_attribute_name(:name)
+      %th= User.human_attribute_name(:email)
       - if can?(:edit, User)
         %th
       - if can?(:destroy, User)
@@ -26,13 +28,9 @@
         %td= mail_to user.email
         - if can?(:edit, user)
           %td.action-button
-            .pull-right
-              = link_to edit_user_path(user), class: 'btn btn-default' do
-                %i.glyphicon.glyphicon-edit
-                Edit
+            = link_to edit_user_path(user), class: 'btn btn-warning btn-xs' do
+              %span.glyphicon.glyphicon-edit
         - if can?(:destroy, user)
           %td.action-button
-            .pull-right
-              = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
-                %i.glyphicon.glyphicon-remove
-                Remove
+            = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do
+              %span.glyphicon.glyphicon-remove
